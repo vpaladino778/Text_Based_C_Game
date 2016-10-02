@@ -56,7 +56,6 @@ void lickSmile(int ty, int cID){
 	}else if(ty == 2){
 		respect++;
 		printf("NPC %d smiles at you. Your respect is now %d. \n",cID,respect);
-
 	}
 	
 }
@@ -77,7 +76,6 @@ void printCreatures(int roomNum, struct creature *c, int s){
 }
 
 char* getState(int state){
-
 	if(state == 0){ return "clean";}
 	else if(state == 1){ return "half-dirty"; }
 	else if(state == 2){ return "dirty";  }
@@ -172,7 +170,6 @@ int movePC(char loc, struct room *r){
 			}	
 			printf("There is nothing to the east \n");	
 			return -1;	
-
 			break;
 
 		case 'w':
@@ -185,9 +182,7 @@ int movePC(char loc, struct room *r){
 			break;
 		default:
 			break;	
-
 	}
-
 }
 int cleanRoom(struct room *r, struct creature *c, int numCrea,int cRoom, struct room *rooms){
 	if(r->state == 0){
@@ -200,7 +195,6 @@ int cleanRoom(struct room *r, struct creature *c, int numCrea,int cRoom, struct 
 		printf("The room is cleaned. It is now %s.\n",getState(r->state));
 		}
 	}		
-	
 		int i;
 		for(i = 0; i < numCrea; i++){
 			if(c[i].type > 0 && c[i].location->roomID == r->roomID){
@@ -289,8 +283,7 @@ void moveFinal(struct room *r, struct creature *c, int id, int numCrea, char dir
 		
 			break;
 		case 's':
-		if(r[0].south != NULL){
-
+		if(r[0].south != NULL)
 			if(c[id].type == 1 && r[0].south->state == 2){
 				c[id].location = r[0].south;
 				cleanRoom(c[id].location,c,numCrea,cRoom, rooms);	
@@ -313,7 +306,6 @@ void moveFinal(struct room *r, struct creature *c, int id, int numCrea, char dir
 			break;
 		case 'e':
 		if(r[0].east != NULL){
-
 			if(c[id].type == 1 && r[0].east->state == 2){
 				c[id].location = r[0].east;
 				cleanRoom(c[id].location,c,numCrea,cRoom, rooms);	
